@@ -1,0 +1,114 @@
+import { Text, StyleSheet, View,SafeAreaView,Image, TextInput, TouchableOpacity } from 'react-native'
+import React, { Component } from 'react';
+
+import { colors } from '../Components/styles'
+
+export default function SignUpScrn ({navigation}) {
+  
+    return (
+      <SafeAreaView style={styles.container}>
+        <View>
+          <Image
+          source={require('../assets/images/doc3.png')}
+          style={{width:340, height:225, marginTop:26, alignSelf:'center'}}
+          resizeMode='contain'
+          />
+          <Text style={styles.text1}> Sign Up</Text>
+          <View style={{    alignItems:'center', justifyContent:'center', marginTop:15}}>
+          <TextInput 
+          placeholder="First Name"
+          style={styles.textInput}
+          keyboardType="email-address"
+          />
+
+          <TextInput 
+          placeholder="Last Name"
+          style={styles.textInput}
+          keyboardType='default'
+          
+          />
+          <TextInput 
+          placeholder="Enter your Email"
+          style={styles.textInput}
+          keyboardType='default'
+          
+          />
+          <TextInput 
+          placeholder=" Password"
+          style={styles.textInput}
+          keyboardType='default'
+          secureTextEntry={true}
+          
+          />
+          </View>
+          
+          
+          
+          <TouchableOpacity style={styles.btn} activeOpacity={0.5}>
+          <Text style={{color:colors.white, fontSize:20,fontWeight:600}}>Sign Up</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.Register} activeOpacity={0.5}
+          onPress={() => navigation.navigate('LoginScrn')}>
+          <View style={styles.regText}>
+          <Text >Already have an account? </Text>
+          <Text style={{color:colors.lightBlue}}>Log in</Text>
+          </View>
+          </TouchableOpacity>
+          
+        </View>
+      </SafeAreaView>
+    )
+  }
+
+
+const styles = StyleSheet.create({
+  container:{
+    flex:1
+  },
+  text1:{
+    fontSize:25,
+    fontWeight:'700',
+    alignSelf:'center',
+    justifyContent:'center',
+    marginTop:10
+    
+  },
+  textInput:{
+    borderWidth:1,
+    borderColor:'black',
+    borderRadius:10,
+    width:272,
+    height:42,
+    marginBottom:15,
+    padding:7
+    
+  },
+  btn:{
+    backgroundColor:colors.primary,
+    borderRadius:10,
+    height:46,
+    width:300,
+    marginTop:65,
+    marginHorizontal:15,
+    alignSelf:'center',
+    alignItems:'center',
+    justifyContent:'center',
+    position:'relative',
+    bottom:0,
+    
+    
+  },
+  Register:{
+    position:'relative',
+    bottom:0,
+    fontSize:20,
+    fontWeight:'700',
+    color:colors.black,
+    marginTop:10,
+    alignSelf:'center',
+    justifyContent:'center',
+  },
+  regText:{
+    flexDirection:'row'
+  }
+})
