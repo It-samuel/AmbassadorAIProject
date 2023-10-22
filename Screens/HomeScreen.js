@@ -1,14 +1,25 @@
-import { StyleSheet, Text, View,Image, SafeAreaView,TouchableOpacity, Linking } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,Image, SafeAreaView,TouchableOpacity, Linking, Modal } from 'react-native'
+import React, {useState} from 'react'
 import { WebView } from 'react-native-webview';
 
+
+const url = 'https://healthcare-bot-dqyjqtxwbmiys.azurewebsites.net/';
 export default function HomeScreen({navigation}) {
+  const [modalVisible, setModalVisible] = useState(false);
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
+
+  
   const MyWebComponent = () => {
     
-    const url = 'https://healthcare-bot-dqyjqtxwbmiys.azurewebsites.net/';
 
     // Open the web link using the Linking module
-    Linking.openURL(url)
+    Linking.openURL(url).then
       .catch((err) => console.error('An error occurred', err));
   };
 
@@ -46,9 +57,32 @@ export default function HomeScreen({navigation}) {
         Here are some<Text style={{color:'#5845EDAD'}}> doctors</Text> that can help you out.
         </Text>
       </View>
-      <TouchableOpacity style={styles.btn} onPress={MyWebComponent}>
+      
+      <TouchableOpacity style={styles.btn} onPress={openModal} >
+      
         <Text> Type here...</Text>
       </TouchableOpacity>
+      <Modal
+        visible={modalVisible}
+        animationType="slide"
+        onRequestClose={closeModal}
+      >
+        
+        <TouchableOpacity onPress={closeModal}>
+        <View style={{padding:10, flexDirection:'row'}}>
+        <Image
+          source={require('../assets/images/arrow.png')}
+          style={{width:20, height:20, }}
+          resizeMode='contain'
+          />
+          <Text style={{marginLeft:5}}>Back</Text>
+        </View>
+        </TouchableOpacity>
+
+          {/* Content inside WebView */}
+          <WebView source={{ uri: url}} />
+        
+      </Modal>
       </View>
     </SafeAreaView>
   )
