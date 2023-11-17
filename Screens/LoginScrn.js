@@ -1,9 +1,21 @@
 import { Text, StyleSheet, View, SafeAreaView, Image, TextInput,TouchableOpacity, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
-
+import { Appwrite } from 'appwrite';
 import { colors } from '../Components/styles'
 
 export default function LoginScrn({navigation}) {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async () => {
+    try {
+      const response = await appwrite.account.createSession(email, password);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   
     return (
         
@@ -22,6 +34,8 @@ export default function LoginScrn({navigation}) {
           placeholder="Enter your Email"
           style={styles.textInput}
           keyboardType="email-address"
+          onChangeText={(text) => setEmail(text)}
+            value={email}
           />
 
           <TextInput 
@@ -29,6 +43,8 @@ export default function LoginScrn({navigation}) {
           style={styles.textInput}
           keyboardType='default'
           secureTextEntry={true}
+          onChangeText={(text) => setPassword(text)}
+            value={password}
           
           />
           </View>

@@ -4,6 +4,20 @@ import React, { Component } from 'react';
 import { colors } from '../Components/styles'
 
 export default function SignUpScrn ({navigation}) {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [FirstName,setFirstName] = useState('');
+  const [LastName, setLastName] = useState('');
+
+  const handleSignUp = async () => {
+    try {
+      const response = await appwrite.account.create(email, password);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
   
     return (
       <SafeAreaView style={styles.container}>
@@ -19,18 +33,24 @@ export default function SignUpScrn ({navigation}) {
           placeholder="First Name"
           style={styles.textInput}
           keyboardType="email-address"
+          onChangeText={(text) => setFirstName(text)}
+            value={FirstName}
           />
 
           <TextInput 
           placeholder="Last Name"
           style={styles.textInput}
           keyboardType='default'
+          onChangeText={(text) => setLastName(text)}
+            value={LastName}
           
           />
           <TextInput 
           placeholder="Enter your Email"
           style={styles.textInput}
           keyboardType='default'
+          onChangeText={(text) => setEmail(text)}
+            value={email}
           
           />
           <TextInput 
@@ -38,6 +58,8 @@ export default function SignUpScrn ({navigation}) {
           style={styles.textInput}
           keyboardType='default'
           secureTextEntry={true}
+          onChangeText={(text) => setPassword(text)}
+            value={password}
           
           />
           </View>
