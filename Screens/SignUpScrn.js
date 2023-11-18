@@ -1,7 +1,9 @@
 import { Text, StyleSheet, View,SafeAreaView,Image, TextInput, TouchableOpacity } from 'react-native'
 import React, { Component } from 'react';
-
+import appwrite from '../Auth/appwrite';
 import { colors } from '../Components/styles'
+import { Client, Account } from "appwrite";
+
 
 export default function SignUpScrn ({navigation}) {
 
@@ -10,14 +12,17 @@ export default function SignUpScrn ({navigation}) {
   const [FirstName,setFirstName] = useState('');
   const [LastName, setLastName] = useState('');
 
-  const handleSignUp = async () => {
-    try {
-      const response = await appwrite.account.create(email, password);
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  
+
+  
+    const handleSignUp = async () => {
+      try {
+        const response = await appwrite.account.create(email, password, FirstName, LastName);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
   
     return (
       <SafeAreaView style={styles.container}>

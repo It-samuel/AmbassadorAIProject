@@ -2,6 +2,7 @@ import { Text, StyleSheet, View, SafeAreaView, Image, TextInput,TouchableOpacity
 import React from 'react'
 import { Appwrite } from 'appwrite';
 import { colors } from '../Components/styles'
+import {ID, Account, Client} from 'appwrite'
 
 export default function LoginScrn({navigation}) {
 
