@@ -1,8 +1,8 @@
 import { Text, StyleSheet, View,SafeAreaView,Image, TextInput, TouchableOpacity } from 'react-native'
-import React, { Component } from 'react';
-import appwrite from '../Auth/appwrite';
+import React, { Component, useState } from 'react';
+import { Appwrite } from 'appwrite';
 import { colors } from '../Components/styles'
-import { Client, Account } from "appwrite";
+import { Client, Account, ID } from "appwrite";
 
 
 export default function SignUpScrn ({navigation}) {
@@ -13,16 +13,42 @@ export default function SignUpScrn ({navigation}) {
   const [LastName, setLastName] = useState('');
 
   
-
   
-    const handleSignUp = async () => {
-      try {
-        const response = await appwrite.account.create(email, password, FirstName, LastName);
-        console.log(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+
+  const handleSignUp = async () => {
+    try {
+      const client = new Client()
+        .setEndpoint('https://cloud.appwrite.io/v1') // Your API Endpoint
+        .setProject('65359beb0e248bfe36be'); // Your project ID
+
+      const account = new Account(client);
+
+      const response = await account.create(
+        '', // Automatically generated user ID
+        email,
+        password,
+        FirstName,
+        LastName
+      );
+
+      console.log('SignUp Success:', response);
+
+      // You can add navigation logic here to navigate to the next screen on successful signup
+      navigation.navigate('NextScreen');
+    } catch (error) {
+      console.error('SignUp Error:', error);
+    } 
+  };
+  
+  
+    // const handleSignUp = async () => {
+    //   try {
+    //     const response = await appwrite.account.create(email, password, FirstName, LastName);
+    //     console.log(response);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
   
     return (
       <SafeAreaView style={styles.container}>
@@ -71,7 +97,7 @@ export default function SignUpScrn ({navigation}) {
           
           
           
-          <TouchableOpacity style={styles.btn} activeOpacity={0.5}>
+          <TouchableOpacity style={styles.btn} activeOpacity={0.5} onPress={handleSignUp}>
           <Text style={{color:colors.white, fontSize:20,fontWeight:600}}>Sign Up</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.Register} activeOpacity={0.5}

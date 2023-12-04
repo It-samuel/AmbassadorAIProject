@@ -1,5 +1,5 @@
 import { Text, StyleSheet, View, SafeAreaView, Image, TextInput,TouchableOpacity, KeyboardAvoidingView } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import { Appwrite } from 'appwrite';
 import { colors } from '../Components/styles'
 import {ID, Account, Client} from 'appwrite'
