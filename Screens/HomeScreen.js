@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import { WebView } from 'react-native-webview';
 
 
-const url = 'https://healthcare-bot-dqyjqtxwbmiys.azurewebsites.net/';
+const url = 'https://healthcare-bot-wssuuaxcz4ai4.azurewebsites.net/';
 export default function HomeScreen({navigation}) {
   const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => {
