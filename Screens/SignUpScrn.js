@@ -5,7 +5,7 @@ import { colors } from '../Components/styles'
 import { Client, Account, ID } from "appwrite";
 
 
-export default function SignUpScrn ({navigation}) {
+export default function SignUpScrn ({navigation}) { 
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

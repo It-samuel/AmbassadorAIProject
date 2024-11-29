@@ -6,7 +6,7 @@ export default function ProfileScrn() {
     return (
       <SafeAreaView style={styles.container}>
         <View >
-          <View>
+          <View> 
           <Image
           source={require('../assets/images/img1.png')}
           style={{width:90, height:90, marginTop:90, alignSelf:'center'}}

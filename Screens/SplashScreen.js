@@ -10,7 +10,7 @@ export default function SplashScreen  ({navigation}) {
     navigation.navigate('OnboardingScrn')
 }, 4000)
   return (
-    <View style={styles.container}>
+    <View style={styles.container}> 
       <Image
   style={{
     width: 340,

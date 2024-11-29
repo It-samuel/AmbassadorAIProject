@@ -9,7 +9,7 @@ export default function LoginScrn({navigation}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
+  const handleLogin = async () => { 
     try {
       const response = await appwrite.account.createSession(email, password);
       console.log(response);

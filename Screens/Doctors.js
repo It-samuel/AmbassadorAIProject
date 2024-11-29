@@ -7,7 +7,7 @@ import {Card} from '../Components/Card';
 export default function Doctors() {
   return (
     <View style={styles.container}>
-      <View >
+      <View > 
         <FlatList 
             style={{marginTop:10, marginBottom:10}}
             horizontal ={false}

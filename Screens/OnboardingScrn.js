@@ -10,7 +10,7 @@ const OnboardingScrn = ({navigation}) => {
             style={{height: 300, width:340 ,marginTop:30 }}
             resizeMode="contain" />
 
-      </View>
+      </View> 
       <View>
         <Text style={styles.text1}>Welcome to Pulse!</Text>
         <View style={{flexDirection:'column'}}>
