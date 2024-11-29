@@ -6,7 +6,7 @@ import { View, TouchableOpacity, Text, SafeAreaView, StyleSheet, Image, ScrollVi
 
 export function Card ({
     docName,
-    description,
+    description, 
     location,
     fees,
     images,

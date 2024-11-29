@@ -11,7 +11,7 @@ import Doctors from '../Screens/Doctors';
 const BottomTab = createBottomTabNavigator();
 export default function BottomTabs() {
   return (
-    <BottomTab.Navigator  >
+    <BottomTab.Navigator  > 
         <BottomTab.Screen 
                 name="Home"
                 component={HomeScreen}

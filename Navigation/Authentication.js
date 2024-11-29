@@ -7,7 +7,7 @@ import SignUpScrn from "../Screens/SignUpScrn";
 import BottomTabs from "./BottomTabs";
 
 
-
+ 
 const Stack = createNativeStackNavigator();
 
 export default function Authentication(){
